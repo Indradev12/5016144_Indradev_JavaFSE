@@ -11,20 +11,6 @@ import java.util.*;
 public class BookController {
 
     private HashMap<Integer, Book> bookMap = new HashMap<>();
-    int i = 1;
-
-    @GetMapping
-    public List<Book> getAllBooks() {
-        return new ArrayList<>(bookMap.values());
-    }
-
-    @PostMapping
-    public Book createBook(@RequestBody Book book) {
-        book.setId(i++);
-        bookMap.put(book.getId(), book);
-        return book;
-    }
-
 
     // Search based on endpoints like title and author
     @GetMapping("/search")
@@ -52,8 +38,4 @@ public class BookController {
         return updatedBook;
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteBook(@PathVariable int id) {
-        bookMap.remove(id);
-    }
 }
